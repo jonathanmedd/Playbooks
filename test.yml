@@ -32,5 +32,5 @@
   - name: Log New User
     debug: var=create_user
 
-  - set_fact:
-      new_user_id: "{{ lookup('template', './test2.yml.j2') }}"
+  - name: Log New User ID
+    debug: var=create_user.json.id
