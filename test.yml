@@ -3,7 +3,7 @@
   tasks:
   - name: Running API
     uri:
-      url: https://api.github.com/users
+      url: https://reqres.in/api/users?page=2
       method: GET
       return_content: yes
     register: user_list
