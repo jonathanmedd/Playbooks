@@ -26,6 +26,7 @@
         name: morpheus
         job: leader
       body_format: json
+      status_code: 201
     register: create_user
 
   - name: Log New User
