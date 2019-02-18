@@ -1,14 +1,14 @@
 ---
 - hosts: localhost
   tasks:
-  - name: Running API
+  - name: Get Users
     uri:
       url: https://reqres.in/api/users?page=2
       method: GET
       return_content: yes
     register: user_list
 
-  - name: App Details
+  - name: Log Users
     debug: var=user_list
 
   - set_fact:
@@ -16,3 +16,20 @@
 
   - name: User Avatar
     debug: var=user_avatar
+
+  - name: Create User
+    uri:
+      url: https://reqres.in/api/users
+      method: POST
+      return_content: yes
+      body:
+        name: morpheus
+        job: leader
+      body_format: json
+    register: create_user
+
+  - name: Log New User
+    debug: var=create_user
+
+  - set_fact:
+      new_user_id: "{{ lookup('template', './test2.yml.j2') }}"
