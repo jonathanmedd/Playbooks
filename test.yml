@@ -1,9 +1,12 @@
-- name: Running API
-  uri:
-    url: https://reqres.in/api/users?page=2
-    method: GET
-    return_content: yes
-  register: user_list
+---
+- hosts: localhost
+  tasks:
+  - name: Running API
+    uri:
+      url: https://api.github.com/users
+      method: GET
+      return_content: yes
+    register: user_list
 
-- name: App Details
-  debug: var=user_list
+  - name: App Details
+    debug: var=user_list
