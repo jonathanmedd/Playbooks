@@ -10,3 +10,9 @@
 
   - name: App Details
     debug: var=user_list
+
+  - set_fact:
+    user_avatar: "{{ lookup('template', './test.yml.j2') }}"
+
+  - name: User Avatar
+    debug: var=user_avatar
