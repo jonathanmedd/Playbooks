@@ -23,7 +23,7 @@
       method: GET
       return_content: yes
       headers:
-        Authorization: token
+        Authorization: "{{ token }}"
     register: projects
 
 
@@ -42,7 +42,7 @@
       method: POST
       return_content: yes
       headers:
-        Authorization: token
+        Authorization: "{{ token }}"
       body: "{{ lookup('file','project.json') }}"
       body_format: json
     register: create_project
