@@ -13,3 +13,9 @@
 
   - name: Log projects
     debug: var=projects.json.content
+
+  - set_fact:
+      project_exists: "{{ lookup('template', './testCAS.yml.j2') }}"
+
+  - name: Log result
+    debug: var=project_exists
