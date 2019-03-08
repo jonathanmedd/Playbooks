@@ -3,12 +3,12 @@
 	"description" : "API Generated Project",
     "administrators" : [
         {
-            "email" : "{{projectAdmins}}"
+            "email" : "jonathan.medd@atos.net"
         }
     ],
     "members" : [
     	{
-    		"email" : "{{projectUsers}}"
+    		"email" : "jonathan.medd@atos.net"
     	}
     ],
     "zoneAssignmentConfigurations":[
