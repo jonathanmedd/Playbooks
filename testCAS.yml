@@ -12,7 +12,7 @@
     register: create_token
 
   - set_fact:
-      token: "Bearer " + create_token.json.token
+      token: "{{ Bearer  + create_token.json.token }}"
 
   - name: Log token
     debug: var=token
