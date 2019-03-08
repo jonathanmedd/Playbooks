@@ -19,3 +19,18 @@
 
   - name: Log result
     debug: var=project_exists
+
+  - name: Create Project
+    uri:
+      url: https://api.mgmt.cloud.vmware.com/iaas/projects
+      method: POST
+      return_content: yes
+      headers:
+        Authorization: "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNpZ25pbmdfMiJ9.eyJzdWIiOiJ2bXdhcmVpZDoxNWU5YTU4OC1iZmNmLTRiMmItYTIxNS04MzkyMDAxZjNmZGMiLCJhenAiOiJjc3BfcHJkX2dhel9pbnRlcm5hbF9jbGllbnRfaWQiLCJkb21haW4iOiJ2bXdhcmVpZCIsImNvbnRleHQiOiIzN2YwMzkwOS1kNjYwLTQwNDItOTQ0My0wMWE5NTA0MTliM2UiLCJpc3MiOiJodHRwczovL2dhei5jc3AtdmlkbS1wcm9kLmNvbSIsInBlcm1zIjpbImNzcDpvcmdfbWVtYmVyIiwiZXh0ZXJuYWwvWnk5MjRtRTNkd24yQVN5VlpSME5uN2x1cGVBXy9hdXRvbWF0aW9uc2VydmljZTpjbG91ZF9hZG1pbiIsImV4dGVybmFsL3VsdnF0TjQxNDFiZUNUMm9PbmJqLXdsa3pHZ18vQ29kZVN0cmVhbTphZG1pbmlzdHJhdG9yIl0sImNvbnRleHRfbmFtZSI6IjdkMjMxYjNhLTkzM2QtNDViNy05OGMyLTk0OTdmNzRmNzAwOSIsImV4cCI6MTU1MjA0NjM4NiwiaWF0IjoxNTUyMDQ0NTg2LCJqdGkiOiJlMTBkMzU3ZS03ZmQ2LTRlOGYtYWVkMy1mYzdhYTJiOGQxZDMiLCJhY2N0Ijoiam9uYXRoYW4ubWVkZCU0MGF0b3MubmV0QHZtd2FyZWlkIiwidXNlcm5hbWUiOiJqb25hdGhhbi5tZWRkQGF0b3MubmV0In0.JVLG0wpk_WL3lGQ4-JQ7uY1rXOP9W54Qu7OD0Ogk50YotNLfP0wvnKBNXAd8UwNvo_Lu9TkHgTbtV5nvSSPGUkiRuzgKJ5UN9zJ_G6d47C_fmoAcva3mDLc9ZPjPqJodlW7DvUQQysLPa91WhALV8UeB172-UDOTugj-IBmL2DfzXX14V5QLVKWM0mSvhmEwDzr49nUuQeFaVLYBv6pg-e7RiSuzBmLO2Bu-vcD3qRLixuZAujsw_h-ICYOprYntYoWKI1XTRyzQChW9bKJsvnyvNAJPgAG4L4oAM4klBh1dK7p3A_gFTV6sElVpapON0yErAzx9WME4YWyUDLN_lg"
+      body: "{{ lookup('file','project.json') }}"
+      body_format: json
+    register: create_project
+    when: not project_exists
+
+  - name: Log New Project
+    debug: var=create_project
