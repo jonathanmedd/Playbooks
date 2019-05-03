@@ -1,12 +1,14 @@
 ---
-- name: Powershell | Install Required Powershell Modules
-  win_psmodule: name={{ item }} state=present
-  with_items:
-    - SQLServerDsc
-    - StorageDsc
-    - ServerManager
-    - dbatools
-    - xNetworking
+- hosts: localhost
+  tasks:
+  - name: Powershell | Install Required Powershell Modules
+    win_psmodule: name={{ item }} state=present
+    with_items:
+      - SQLServerDsc
+      - StorageDsc
+      - ServerManager
+      - dbatools
+      - xNetworking
 
 
 # - name: Install SQL Server
