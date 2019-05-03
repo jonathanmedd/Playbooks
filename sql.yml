@@ -38,6 +38,6 @@
     win_service:
       name: sqlserveragent
       state: started
-      username: "SPRINGFIELD\\sql_service"
+      username: "SPRINGFIELD\\sql_svc"
       password: "Password123"
     tags: install_sql
