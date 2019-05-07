@@ -41,3 +41,11 @@
       username: "SPRINGFIELD\\sql_svc"
       password: "Password123"
     tags: install_sql
+
+  - name: Configure the MSSQLSERVER Service
+    win_service:
+      name: MSSQLSERVER
+      state: started
+      username: "SPRINGFIELD\\sql_svc"
+      password: "Password123"
+    tags: install_sql
