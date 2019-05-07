@@ -1,0 +1,22 @@
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+
+  - name: create script directory
+    win_file:
+      path: "{{ script_path }}"
+      state: directory
+
+  - name: copy powershell script
+    win_copy:
+      src: "/files/create-dhcp-reservation.ps1"
+      dest: "{{ script_path }}"
+
+  - name: copy servers.csv
+    win_copy:
+      src: "/files/servers.csv"
+      dest: "{{ script_path }}"
+
+  - name: install WDS and DHCP
+    win_shell: "{{ script_path }}\\create-dhcp-reservation.ps1 -InputFileName {{ script_path }}\\{{ Input_FileName }} -DHCPScopeName {{ DHCP_ScopeName }} -DHCPScopeSubnet {{ DHCPScopeSubnet }} -DHCPServerName {{ DHCPServerName }} -DNSServer {{ DNSServer }} -FQDN {{ FQDN }}"
