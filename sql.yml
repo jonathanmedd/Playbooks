@@ -15,22 +15,22 @@
       resource_name: SQLSetup
       Action: Install
       UpdateEnabled: True
-      SourcePath: "E:\\Temp\\SQL"
-      InstanceName: "MSSQLSERVER"
-      InstallSharedDir: "C:\\Program Files\\Microsoft SQL Server"
-      InstallSharedwowDir: "C:\\Program Files (x86)\\Microsoft SQL Server"
-      InstanceDir: "C:\\Program Files\\Microsoft SQL Server"
-      SQLUserDBDir: "C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data"
-      SQLUserDBLogDir: "C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data"
-      SQLTempDBDir: "C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data"
-      SQLTempDBLogDir: "C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data"
-      Features: "SQLENGINE,AS"
-      SQLCollation: "SQL_Latin1_General_CP1_CI_AS"
+      SourcePath: "{{ mssql_installation_path }}\\SQL"
+      InstanceName: "{{ mssql_instance_name }}"
+      InstallSharedDir: "{{ mssql_installshared_path }}"
+      InstallSharedwowDir: "{{ mssql_installsharedwow_path }}"
+      InstanceDir: "{{ mssql_instance_path }}"
+      SQLUserDBDir: "{{ mssql_sqluserdata_path }}"
+      SQLUserDBLogDir: "{{ mssql_sqluserlog_path }}"
+      SQLTempDBDir: "{{ mssql_sqltempDB_path }}"
+      SQLTempDBLogDir: "{{ mssql_sqltempDBlog_path }}"
+      Features: "{{ mssql_features }}"
+      SQLCollation: "{{ mssql_collation }}"
       # BrowserSvcStartupType: "{{ mssql_browsersvc_mode }}"
       # SuppressReboot: "{{ mssql_suppress_reboot }}"
-      SQLSysAdminAccounts: "SPRINGFIELD\\sql_admins"
-      PsDscRunAsCredential_username: 'svc_ansible'
-      PsDscRunAsCredential_password: 'Password123'
+      SQLSysAdminAccounts: "{{ mssql_sysadmin_accounts }}"
+      PsDscRunAsCredential_username: "{{ ansible_user }}"
+      PsDscRunAsCredential_password: "{{ ansible_password }}"
     no_log: true
     tags: install_sql
 
@@ -38,14 +38,14 @@
     win_service:
       name: sqlserveragent
       state: started
-      username: "SPRINGFIELD\\sql_svc"
-      password: "Password123"
+      username: "{{ mssql_agentsvc_account }}"
+      password: "{{ mssql_agentsvc_account_pass }}"
     tags: install_sql
 
   - name: Configure the MSSQLSERVER Service
     win_service:
       name: MSSQLSERVER
       state: started
-      username: "SPRINGFIELD\\sql_svc"
-      password: "Password123"
+      username: "{{ mssql_svc_account }}"
+      password: "{{ mssql_svc_account_pass }}"
     tags: install_sql
