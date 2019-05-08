@@ -1,8 +1,19 @@
 ---
 - hosts: 10.0.3.4
   tasks:
-  - name: testShell
-    win_shell: Get-Service
+
+  - name: create script directory
+    win_file:
+      path: "C:\\Scripts"
+      state: directory
+
+  - name: copy powershell script
+    win_copy:
+      src: "{{ playbook_dir }}/files/test.ps1"
+      dest: "C:\\Scripts\\"
+
+  - name: test script
+    win_shell: "C:\\Scripts\\test.ps1"
     register: test_output
 
   - debug:
