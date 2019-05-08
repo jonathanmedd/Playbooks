@@ -1,0 +1,9 @@
+---
+- hosts: 10.0.3.4
+  tasks:
+  - name: testShell
+    win_shell: Get-Service
+    register: test_output
+
+  - debug:
+        var: test_output.stdout_lines
