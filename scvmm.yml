@@ -10,8 +10,8 @@
     win_dsc:
       resource_name: xSCVMMManagementServerSetup
       Ensure: "Present"
-      SourcePath: 'E:\SCVMM'
-      #SourceFolder: "SCVMM"
+      SourcePath: 'E:\'
+      SourceFolder: "SCVMM"
       SetupCredential_username: "svc_ansible"
       SetupCredential_password: "P@ssword!"
       vmmService_username: "SPRINGFIELD\\svc_vmm"
