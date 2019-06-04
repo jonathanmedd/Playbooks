@@ -21,7 +21,7 @@
       CreateNewSqlDatabase: 1
       SqlDatabaseName: VirtualManagerDB
       CreateNewLibraryShare: 1
-      LibrarySharePath: "E:\MSSCVMMLibrary"
+      LibrarySharePath: "E:\\MSSCVMMLibrary"
       LibraryShareName: "MSSCVMMLibrary"
       SQMOptIn: 1
       MUOptIn: 1
