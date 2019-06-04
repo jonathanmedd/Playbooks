@@ -6,26 +6,11 @@
     with_items:
       - xSCVMM
 
-  # - name: Install SQL Server
-  #   win_dsc:
-  #     resource_name: SQLSetup
-  #     Action: Install
-  #     UpdateEnabled: True
-  #     SourcePath: "{{ mssql_installation_path }}\\SQL"
-  #     InstanceName: "{{ mssql_instance_name }}"
-  #     InstallSharedDir: "{{ mssql_installshared_path }}"
-  #     InstallSharedwowDir: "{{ mssql_installsharedwow_path }}"
-  #     InstanceDir: "{{ mssql_instance_path }}"
-  #     SQLUserDBDir: "{{ mssql_sqluserdata_path }}"
-  #     SQLUserDBLogDir: "{{ mssql_sqluserlog_path }}"
-  #     SQLTempDBDir: "{{ mssql_sqltempDB_path }}"
-  #     SQLTempDBLogDir: "{{ mssql_sqltempDBlog_path }}"
-  #     Features: "{{ mssql_features }}"
-  #     SQLCollation: "{{ mssql_collation }}"
-  #     # BrowserSvcStartupType: "{{ mssql_browsersvc_mode }}"
-  #     # SuppressReboot: "{{ mssql_suppress_reboot }}"
-  #     SQLSysAdminAccounts: "{{ mssql_sysadmin_accounts }}"
-  #     PsDscRunAsCredential_username: "{{ ansible_user }}"
-  #     PsDscRunAsCredential_password: "{{ ansible_password }}"
-  #   no_log: true
-  #   tags: install_sql
+  - name: Install SCVMM Console
+    win_dsc:
+      resource_name: xSCVMMConsoleSetup
+      Ensure: "Present"
+      SourcePath: "E:\\"
+      SourceFolder: "SCVMM"
+      SetupCredential_username: "svc_ansible"
+      SetupCredential_password: "P@ssword!"
