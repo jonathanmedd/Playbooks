@@ -8,9 +8,47 @@
 
   - name: Install SCVMM Console
     win_dsc:
-      resource_name: xSCVMMConsoleSetup
+      resource_name: xSCVMMManagementServerSetup
       Ensure: "Present"
       SourcePath: "E:\\"
       SourceFolder: "SCVMM"
       SetupCredential_username: "svc_ansible"
       SetupCredential_password: "P@ssword!"
+      vmmService: "svc_vmm@springfield.local"
+      SqlMachineName: "scvmm01"
+      SqlInstanceName: "MSSQLSERVER"
+      CompanyName: "Test Inc"
+      CreateNewSqlDatabase: 1
+      SqlDatabaseName: VirtualManagerDB
+      CreateNewLibraryShare: 1
+      LibrarySharePath: "E:\MSSCVMMLibrary"
+      LibraryShareName: "MSSCVMMLibrary"
+      SQMOptIn: 1
+      MUOptIn: 1
+
+
+
+
+#RemoteDatabaseImpersonation = 1
+
+
+#SqlMachineName=$($env:COMPUTERNAME)
+# SqlDBAdminName=$VMMServiceUsername
+# SqlDBAdminDomain=$VMMServiceDomain
+# SqlDBAdminPassword=$VmmServiceUserPassword
+#VmmServiceLocalAccount=1
+
+
+
+
+
+
+
+  # - name: Install SCVMM Console
+  #   win_dsc:
+  #     resource_name: xSCVMMConsoleSetup
+  #     Ensure: "Present"
+  #     SourcePath: "E:\\"
+  #     SourceFolder: "SCVMM"
+  #     SetupCredential_username: "svc_ansible"
+  #     SetupCredential_password: "P@ssword!"
