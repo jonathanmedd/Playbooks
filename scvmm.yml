@@ -14,7 +14,7 @@
       SourceFolder: "SCVMM"
       SetupCredential_username: "svc_ansible"
       SetupCredential_password: "P@ssword!"
-      vmmService_username: "svc_vmm@springfield.local"
+      vmmService_username: "SPRINGFIELD\svc_vmm"
       vmmService_password: "P@ssword!"
       SqlMachineName: "scvmm01"
       SqlInstanceName: "MSSQLSERVER"
