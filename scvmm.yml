@@ -16,6 +16,8 @@
       SetupCredential_password: "P@ssword!"
       vmmService_username: "SPRINGFIELD\\svc_vmm"
       vmmService_password: "P@ssword!"
+      sqlService_username: "SPRINGFIELD\\sql_svc"
+      sqlService_password: "P@ssword!"
       SqlMachineName: "scvmm01"
       SqlInstanceName: "MSSQLSERVER"
       CompanyName: "Test Inc"
