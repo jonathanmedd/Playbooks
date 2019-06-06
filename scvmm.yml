@@ -6,7 +6,7 @@
     with_items:
       - xSCVMM
 
-  - name: Install SCVMM
+  - name: Install 7zip
     win_chocolatey:
       name: 7zip
       state: present
