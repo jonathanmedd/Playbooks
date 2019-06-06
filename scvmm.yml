@@ -8,10 +8,16 @@
 
   - name: Install SCVMM
     win_chocolatey:
-      name: scvmm
+      name: 7zip
       state: present
-      source: "E:\\Packages\\SCVMM"
-      install_args: "/i /IAcceptSCEULA /server /f e:\\packages\\scvmm.ini /vmmServiceDomain SPRINGFIELD /vmmServiceUserName svc_vmm /vmmServiceUserPassword P@ssword! /SqlDBAdminDomain SPRINGFIELD /SqlDBAdminName svc_vmm /SqlDBAdminPassword P@ssword!"
+      source: "E:\\Packages\\7zip"
+
+  # - name: Install SCVMM
+  #   win_chocolatey:
+  #     name: scvmm
+  #     state: present
+  #     source: "E:\\Packages\\SCVMM"
+  #     install_args: "/i /IAcceptSCEULA /server /f e:\\packages\\scvmm.ini /vmmServiceDomain SPRINGFIELD /vmmServiceUserName svc_vmm /vmmServiceUserPassword P@ssword! /SqlDBAdminDomain SPRINGFIELD /SqlDBAdminName svc_vmm /SqlDBAdminPassword P@ssword!"
 
   # - name: Install SCVMM Console
   #   win_dsc:
