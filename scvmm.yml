@@ -10,7 +10,7 @@
     win_chocolatey:
       name: 7zip
       state: present
-      source: "E:\\Packages\\7zip"
+      #source: "E:\\Packages\\7zip"
 
   # - name: Install SCVMM
   #   win_chocolatey:
