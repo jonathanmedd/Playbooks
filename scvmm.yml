@@ -6,28 +6,35 @@
     with_items:
       - xSCVMM
 
-  - name: Install SCVMM Console
-    win_dsc:
-      resource_name: xSCVMMManagementServerSetup
-      Ensure: "Present"
-      SourcePath: 'E:\'
-      SourceFolder: "SCVMM"
-      SetupCredential_username: "svc_ansible"
-      SetupCredential_password: "P@ssword!"
-      vmmService_username: "SPRINGFIELD\\svc_vmm"
-      vmmService_password: "P@ssword!"
-      # sqlService_username: "SPRINGFIELD\\sql_svc"
-      # sqlService_password: "P@ssword!"
-      SqlMachineName: "scvmm01"
-      SqlInstanceName: "MSSQLSERVER"
-      CompanyName: "Test Inc"
-      CreateNewSqlDatabase: 1
-      SqlDatabaseName: VirtualManagerDB
-      CreateNewLibraryShare: 1
-      LibrarySharePath: "E:\\MSSCVMMLibrary"
-      LibraryShareName: "MSSCVMMLibrary"
-      SQMOptIn: 1
-      MUOptIn: 1
+  - name: Install SCVMM
+    win_chocolatey:
+      name: scvmm
+      state: present
+      source: "E:\\Packages\\SCVMM"
+      install_args: "/i /IAcceptSCEULA /server /f e:\\packages\\scvmm.ini /vmmServiceDomain SPRINGFIELD /vmmServiceUserName svc_vmm /vmmServiceUserPassword P@ssword! /SqlDBAdminDomain SPRINGFIELD /SqlDBAdminName svc_vmm /SqlDBAdminPassword P@ssword!"
+
+  # - name: Install SCVMM Console
+  #   win_dsc:
+  #     resource_name: xSCVMMManagementServerSetup
+  #     Ensure: "Present"
+  #     SourcePath: 'E:\'
+  #     SourceFolder: "SCVMM"
+  #     SetupCredential_username: "svc_ansible"
+  #     SetupCredential_password: "P@ssword!"
+  #     vmmService_username: "SPRINGFIELD\\svc_vmm"
+  #     vmmService_password: "P@ssword!"
+  #     # sqlService_username: "SPRINGFIELD\\sql_svc"
+  #     # sqlService_password: "P@ssword!"
+  #     SqlMachineName: "scvmm01"
+  #     SqlInstanceName: "MSSQLSERVER"
+  #     CompanyName: "Test Inc"
+  #     CreateNewSqlDatabase: 1
+  #     SqlDatabaseName: VirtualManagerDB
+  #     CreateNewLibraryShare: 1
+  #     LibrarySharePath: "E:\\MSSCVMMLibrary"
+  #     LibraryShareName: "MSSCVMMLibrary"
+  #     SQMOptIn: 1
+  #     MUOptIn: 1
 
 
 
