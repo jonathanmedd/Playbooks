@@ -1,5 +1,5 @@
 ---
-- hosts: 10.0.3.4
+- hosts: All
   tasks:
   - name: Powershell | Install Required Powershell Modules
     win_psmodule: name={{ item }} state=present
