@@ -8,10 +8,10 @@
       actions:
       - path: C:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe
         arguments: -File E:\Install-SCVMM.ps1 -VmmServiceDomain Springfield -VmmServiceUserName svc_vmm -VmmServiceUserPassword P@ssword!
-      username: SPRINGFIELD\svc_ansible
+      username: SPRINGFIELD\jmedd
       password: P@ssword!
       run_level: highest
-      logon_type: s4u
+      logon_type: password
       state: present
       enabled: yes
 
