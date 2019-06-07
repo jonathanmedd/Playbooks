@@ -26,7 +26,7 @@
       install_args: "/i /IAcceptSCEULA /server /f e:\\packages\\scvmm.ini /vmmServiceDomain SPRINGFIELD /vmmServiceUserName svc_vmm /vmmServiceUserPassword P@ssword! /SqlDBAdminDomain SPRINGFIELD /SqlDBAdminName svc_vmm /SqlDBAdminPassword P@ssword!"
     become: yes
     become_user: SPRINGFIELD\svc_ansible
-    become_password: P@ssword!
+    #become_password: P@ssword!
     become_method: runas
 
   # - name: Install SCVMM Console
