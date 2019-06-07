@@ -1,10 +1,14 @@
 ---
 - hosts: all
   tasks:
-  - name: Powershell | Install Required Powershell Modules
-    win_psmodule: name={{ item }} state=present
-    with_items:
-      - xSCVMM
+  - name: Run scheduled task
+    win_shell: Get-ScheduledTask -TaskName scvmm | Start-ScheduledTask
+
+
+  # - name: Powershell | Install Required Powershell Modules
+  #   win_psmodule: name={{ item }} state=present
+  #   with_items:
+  #     - xSCVMM
 
   # - name: Install notepadplusplus
   #   win_chocolatey:
@@ -18,17 +22,17 @@
   #     state: present
   #     source: "E:\\Packages\\7zip"
 
-  - name: Install SCVMM
-    win_chocolatey:
-      name: scvmm
-      state: present
-      source: "E:\\Packages\\SCVMM"
-      install_args: "/i /IAcceptSCEULA /server /f e:\\packages\\scvmm.ini /vmmServiceDomain SPRINGFIELD /vmmServiceUserName svc_vmm /vmmServiceUserPassword P@ssword! /SqlDBAdminDomain SPRINGFIELD /SqlDBAdminName svc_vmm /SqlDBAdminPassword P@ssword!"
-    vars:
-      ansible_become: yes
-      ansible_become_user: SPRINGFIELD\svc_ansible
-      ansible_become_password: P@ssword!
-      ansible_become_method: runas
+  # - name: Install SCVMM
+  #   win_chocolatey:
+  #     name: scvmm
+  #     state: present
+  #     source: "E:\\Packages\\SCVMM"
+  #     install_args: "/i /IAcceptSCEULA /server /f e:\\packages\\scvmm.ini /vmmServiceDomain SPRINGFIELD /vmmServiceUserName svc_vmm /vmmServiceUserPassword P@ssword! /SqlDBAdminDomain SPRINGFIELD /SqlDBAdminName svc_vmm /SqlDBAdminPassword P@ssword!"
+  #   vars:
+  #     ansible_become: yes
+  #     ansible_become_user: SPRINGFIELD\svc_ansible
+  #     ansible_become_password: P@ssword!
+  #     ansible_become_method: runas
 
   # - name: Install SCVMM Console
   #   win_dsc:
