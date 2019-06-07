@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+
+    - name: Single line PowerShell
+    win_shell: Set-Content -Path C:\temp\test.txt -Value 'Hello there. '
+
+    - name: Run multi-lined shell commands
+    win_shell: |
+        $text = Get-Content C:\Temp\test.txt
+        $text += ' General Kenobi....you are a bold one'
+        Set-Content -Path C:\Temp\test2.txt -Value $text
+
+    - name: "Run a script"
+    win_shell: C:\temp\test.ps1
