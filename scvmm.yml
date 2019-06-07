@@ -11,6 +11,7 @@
       username: SPRINGFIELD\svc_ansible
       password: P@ssword!
       run_level: highest
+      logon_type: s4u
       state: present
       enabled: yes
 
