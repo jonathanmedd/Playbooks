@@ -16,7 +16,7 @@
 
 
   - name: Run scheduled task
-    win_shell: E:\test.ps1
+    win_shell: E:\Invoke-ScheduledTask.ps1
 
 
   # - name: Powershell | Install Required Powershell Modules
