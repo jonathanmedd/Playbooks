@@ -1,8 +1,22 @@
 ---
 - hosts: all
   tasks:
-  - name: Run scheduled task
-    win_shell: Get-ScheduledTask -TaskName scvmm | Start-ScheduledTask
+  - name: Create scheduled task
+    win_scheduled_task:
+      name: scvmm_test
+      description: install scvmm
+      actions:
+      - path: C:\WINDOWS\system32\WindowsPowerShell\v1.0\powershell.exe
+        arguments: -File E:\Install-SCVMM.ps1 -VmmServiceDomain Springfield -VmmServiceUserName svc_vmm -VmmServiceUserPassword P@ssword!
+      username: SPRINGFIELD\svc_ansible
+      password: P@ssword!
+      run_level: highest
+      state: present
+      enabled: yes
+
+
+  # - name: Run scheduled task
+  #   win_shell: Get-ScheduledTask -TaskName scvmm | Start-ScheduledTask
 
 
   # - name: Powershell | Install Required Powershell Modules
@@ -57,29 +71,3 @@
   #     SQMOptIn: 1
   #     MUOptIn: 1
 
-
-
-
-#RemoteDatabaseImpersonation = 1
-
-
-#SqlMachineName=$($env:COMPUTERNAME)
-# SqlDBAdminName=$VMMServiceUsername
-# SqlDBAdminDomain=$VMMServiceDomain
-# SqlDBAdminPassword=$VmmServiceUserPassword
-#VmmServiceLocalAccount=1
-
-
-
-
-
-
-
-  # - name: Install SCVMM Console
-  #   win_dsc:
-  #     resource_name: xSCVMMConsoleSetup
-  #     Ensure: "Present"
-  #     SourcePath: "E:\\"
-  #     SourceFolder: "SCVMM"
-  #     SetupCredential_username: "svc_ansible"
-  #     SetupCredential_password: "P@ssword!"
