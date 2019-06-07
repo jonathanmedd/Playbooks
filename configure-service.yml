@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Configure the BITS Service
+    win_service:
+      name: BITSCompactServer
+      state: started
+      start_mode: auto
