@@ -1,0 +1,8 @@
+---
+- hosts: all
+  tasks:
+  - name: Powershell | Install Required Powershell Modules
+    win_psmodule: name={{ item }} state=present
+    with_items:
+      - PowervRA
+      - PowervRO
