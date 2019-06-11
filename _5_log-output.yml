@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Copy a single file
+    win_copy:
+      src: "{{ playbook_dir }}/files/test-output.ps1"
+      dest: C:\Temp\test-output.ps1
+
+  - name: Run a script
+    win_shell: C:\Temp\test-output.ps1
+    register: result
+
+  - debug: var=result.stdout_lines
