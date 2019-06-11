@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Create Test Account
+    win_dsc:
+      resource_name:  xADUser
+      DomainName: springfield.local
+      UserName: "test.user"
+      Password_password: "P@ssword!"
+      Password_username: "dummy"
+      Ensure: present
+      Path: "OU=Users,OU=HQ,DC=springfield,DC=local"
+      DisplayName:  "Test User"
+      GivenName:  "Test"
+      Enabled:  true
+      PasswordNeverExpires: true
