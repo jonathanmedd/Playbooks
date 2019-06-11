@@ -9,5 +9,5 @@ catch {
 
     Write-Error "Unable find service" -ErrorAction Continue
     Write-Error $_.Exception.Message -ErrorAction Continue
-    exit 12
+    exit 1
 }
