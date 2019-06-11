@@ -8,4 +8,4 @@
       dest: C:\Temp\Example-ErrorHandling.ps1
 
   - name: Run a script
-    win_shell: C:\Temp\Example-ErrorHandling.ps1.ps1
+    win_shell: C:\Temp\Example-ErrorHandling.ps1
