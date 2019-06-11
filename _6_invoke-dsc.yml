@@ -11,12 +11,14 @@
     win_dsc:
       resource_name:  xADUser
       DomainName: springfield.local
-      UserName: "test.user"
+      UserName: "test_user"
       Password_password: "P@ssword!"
       Password_username: "dummy"
       Ensure: present
       Path: "OU=Users,OU=HQ,DC=springfield,DC=local"
       DisplayName:  "Test User"
       GivenName:  "Test"
+      Surname: "User"
+      UserPrincipalName: "test_user@springfield.local"
       Enabled:  true
       PasswordNeverExpires: true
