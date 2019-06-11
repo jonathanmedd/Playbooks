@@ -4,7 +4,7 @@
 
   - name: Powershell | Install Required Powershell Modules
     win_psmodule:
-      name: xADUser
+      name: xActiveDirectory
       state: present
 
   - name: Create Test Account
