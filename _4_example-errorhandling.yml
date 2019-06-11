@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+
+ - name: Copy a single file
+    win_copy:
+      src: "{{ playbook_dir }}/files/Example-ErrorHandling.ps1"
+      dest: C:\Temp\Example-ErrorHandling.ps1
+
+  # - name: Run a script
+  #   win_shell: C:\temp\test.ps1
