@@ -3,11 +3,11 @@ $ErrorActionPreference ='Stop'
 
 # Start Scheduled Task
 try {
-    Get-ScheduledTask -TaskName scvmm_test | Start-ScheduledTask
+    Get-Service "This will fail"
 }
 catch {
 
-    Write-Error "Unable to Start Scheduled Task" -ErrorAction Continue
+    Write-Error "Unable find service" -ErrorAction Continue
     Write-Error $_.Exception.Message -ErrorAction Continue
-    exit 1
+    exit 12
 }
