@@ -2,6 +2,11 @@
 - hosts: all
   tasks:
 
+  - name: Powershell | Install Required Powershell Modules
+    win_psmodule:
+      name: xADUser
+      state: present
+
   - name: Create Test Account
     win_dsc:
       resource_name:  xADUser
