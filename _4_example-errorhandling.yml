@@ -7,5 +7,5 @@
       src: "{{ playbook_dir }}/files/Example-ErrorHandling.ps1"
       dest: C:\Temp\Example-ErrorHandling.ps1
 
-  # - name: Run a script
-  #   win_shell: C:\temp\test.ps1
+  - name: Run a script
+    win_shell: C:\Temp\Example-ErrorHandling.ps1.ps1
