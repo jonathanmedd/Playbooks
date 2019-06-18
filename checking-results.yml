@@ -1,0 +1,12 @@
+  - name: execute test
+    win_shell: "C:\\temp\\.ps1"
+    register: ps_result
+    failed_when: ps_result.stderr | length > 0
+
+  - debug:
+      msg: [ "{{ ps_result.stdout }}" , "{{ ps_result.stderr }}" ]
+    when: ps_result.stderr | length > 0
+
+  - debug:
+      msg: "{{ ps_result.stdout }}"
+    when: ps_result.stderr | length == 0
