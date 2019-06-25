@@ -11,3 +11,6 @@ catch {
     Write-Error $_.Exception.Message -ErrorAction Continue
     exit 1
 }
+
+
+exit 0
