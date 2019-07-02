@@ -10,17 +10,18 @@
     win_shell: C:\Temp\test-output.ps1
     register: result
   - set_fact:
-        myvalue: "{{ result.stdout | regex_findall('(?<=VM: )(.*)') }}"
+        vms: "{{ result.stdout | regex_findall('(?<=VM: )(.*)') }}"
   - debug:
-      var: myvalue
+      var: vms
 
   # - debug: var=result.stdout_lines
 
-  # - name: wait for vm to respond
-  #   wait_for:
-  #     host: "{{ VM_StaticIPAddress.split('/')[0] }}"
-  #     port: 5985
-  #     delay: 300
-  #     timeout: 600
-  #     connect_timeout: 30
-  #   delegate_to: localhost
+  - name: wait for vm to respond
+    wait_for:
+      host: "{{ item }}"
+      port: 5985
+      delay: 3
+      timeout: 600
+      connect_timeout: 5
+    delegate_to: localhost
+    loop: "{{  vms  }}"
