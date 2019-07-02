@@ -11,8 +11,8 @@
     register: result
   - set_fact:
         myvalue: "{{ result.stdout | regex_search('(?<=VM: )(.*)') }}"
-    - debug:
-        var: myvalue
+  - debug:
+      var: myvalue
 
   # - debug: var=result.stdout_lines
 
