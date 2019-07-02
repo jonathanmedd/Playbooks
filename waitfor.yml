@@ -10,7 +10,7 @@
     win_shell: C:\Temp\test-output.ps1
     register: result
   - set_fact:
-        myvalue: "{{ result.stdout | regex_search('(?<=VM: )(.*)') }}"
+        myvalue: "{{ result.stdout | regex_findall('(?<=VM: )(.*)') }}"
   - debug:
       var: myvalue
 
