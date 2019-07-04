@@ -9,12 +9,12 @@
   - name: Run a script
     win_shell: C:\Temp\test-output.ps1
     register: result
-  - set_fact:
-        vms: "{{ result.stdout | regex_findall('(?<=VM: )(.*)') }}"
-  - debug:
-      var: vms
 
-  # - debug: var=result.stdout_lines
+  - name: Process script output
+    set_fact:
+        vms: "{{ result.stdout | regex_findall('(?<=VM: )(.*)') }}"
+    debug:
+      var: vms
 
   - name: wait for vm to respond
     wait_for:
