@@ -13,6 +13,8 @@
   - name: Process script output
     set_fact:
         vms: "{{ result.stdout | regex_findall('(?<=VM: )(.*)') }}"
+
+  - name: Log processed script output
     debug:
       var: vms
 
