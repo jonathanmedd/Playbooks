@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+  - name: create  directory
+    win_file:
+      path: 'C:\temp'
+      state: directory
+
+  - name: Copy a single file
+    win_copy:
+      src: "{{ playbook_dir }}/files/serverconfig.ps1"
+      dest: C:\temp\serverconfig.ps1
+
+  - name: Run a script
+    win_shell: C:\temp\serverconfig.ps1
