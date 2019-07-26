@@ -13,8 +13,8 @@
 
   - name: Process win_shell output
     set_fact:
-      vms: "{{ result2.stdout | from_json }}"
+      vm: "{{ result2.stdout | from_json }}"
 
   - name: Debug VM properties
     debug:
-      msg: VM {{ vms[0].name }} has IP Address {{ vms[0].ipAddress }}
+      msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
