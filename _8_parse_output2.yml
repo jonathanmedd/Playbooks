@@ -1,0 +1,20 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Copy a single file
+    win_copy:
+      src: "{{ playbook_dir }}/files/test_output2.ps1"
+      dest: C:\Temp\test_output2.ps1
+
+  - name: Run a script
+    win_shell: C:\temp\test_output2.ps1
+    register: result2
+
+  - name: Process win_shell output
+    set_fact:
+      vms: "{{ result2.stdout | from_json }}"
+
+  - name: Debug VM properties
+    debug:
+      msg: VM {{ vms[0].name }} has IP Address {{ vms[0].ipAddress }}
