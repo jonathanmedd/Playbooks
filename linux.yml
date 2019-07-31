@@ -15,5 +15,9 @@
 
   - name: Debug process properties
     debug:
-      msg: Process {{ item.Name }} has SessionId {{ item.SessionId }}
-    loop: processes
+      msg: Process {{ processes[0].name }} has SessionId {{ processes[0].SessionId }}
+
+  # - name: Debug process properties
+  #   debug:
+  #     msg: Process {{ item.Name }} has SessionId {{ item.SessionId }}
+  #   loop: processes
