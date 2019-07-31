@@ -1,10 +1,18 @@
 ---
 - hosts: all
-  gather_facts: True
+  gather_facts: False
   tasks:
 
   - name: Run a pwsh command
-    shell: Get-Process
+    shell: Get-Process | ConvertTo-Json
     args:
       executable: /usr/bin/pwsh
     register: result
+
+  - name: Process win_shell output
+    set_fact:
+      processes: "{{ result.stdout | from_json }}"
+
+  # - name: Debug VM properties
+  #   debug:
+  #     msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
