@@ -20,5 +20,5 @@
 
   - name: Debug process properties
     debug:
-      msg: Process "{{ item.Name }}" has SessionId "{{ item.SessionId }}"
+      msg: Process "{{ item }}".Name has SessionId "{{ item }}".SessionId
     with_items: "{{ processes }}"
