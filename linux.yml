@@ -13,6 +13,7 @@
     set_fact:
       processes: "{{ result.stdout | from_json }}"
 
-  # - name: Debug VM properties
-  #   debug:
-  #     msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
+  - name: Debug process properties
+    debug:
+      msg: Process {{ item.Name }} has SessionId {{ item.SessionId }}
+    loop: processes
