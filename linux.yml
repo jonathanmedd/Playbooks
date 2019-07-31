@@ -1,3 +1,9 @@
 ---
 - hosts: all
   gather_facts: True
+
+- name: Run a pwsh command
+  shell: Get-Process
+  args:
+    executable: /usr/bin/pwsh
+  register: result
