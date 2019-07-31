@@ -15,7 +15,7 @@
 
   - name: Debug process properties
     debug:
-      var: processes
+      var: processes[0]
       #msg: Process {{ processes[0].name }} has SessionId {{ processes[0].SessionId }}
 
   # - name: Debug process properties
