@@ -14,7 +14,8 @@
       processes: "{{ result.stdout | from_json }}"
 
   - name: Debug process properties
-    debug: processes
+    debug:
+      var: processes
       #msg: Process {{ processes[0].name }} has SessionId {{ processes[0].SessionId }}
 
   # - name: Debug process properties
