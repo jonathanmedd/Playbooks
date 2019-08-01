@@ -19,4 +19,5 @@
 
   - name: Debug process properties
     debug:
-      msg: Process {{ cron_process.Name }} has SessionId {{ cron_process.SessionId }} and a VirtualMemorySize of {{ cron_process.VirtualMemorySize}}
+      msg: Process {{ cron_process[0].Name }} has SessionId {{ cron_process[0].SessionId }} and a VirtualMemorySize of {{ cron_process[0].VirtualMemorySize}}
+
