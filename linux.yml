@@ -15,7 +15,7 @@
 
   - name: Search for data
     set_fact:
-      accounts-daemon: "{{ processes | selectattr('name', 'equalto', 'accounts-daemon') | list }}"
+      accounts-daemon: "{{ processes | selectattr('Name', 'equalto', 'accounts-daemon') | list }}"
 
   # - name: Debug process properties
   #   debug:
