@@ -17,8 +17,6 @@
     set_fact:
       cron_process: "{{ processes | selectattr('Name', 'equalto', 'cron') | list }}"
 
-  # - name: Debug process properties
-  #   debug:
-  #     #var: processes[0].Name
-  #     msg: Process {{ processes[0].Name }} has SessionId {{ processes[0].SessionId }}
-
+  - name: Debug process properties
+    debug:
+      msg: Process {{ cron_process.Name }} has SessionId {{ cron_process.SessionId }} and a VirtualMemorySize of {{ cron_process.VirtualMemorySize}}
