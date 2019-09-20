@@ -7,7 +7,7 @@
       name: SNMPTRAP
     register: service_info
 
-  - name: Configure the BITS Service
+  - name: Configure the SNMPTRAP Service
     win_service:
       name: SNMPTRAP
       state: started
