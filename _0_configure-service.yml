@@ -4,11 +4,11 @@
 
   - name: Check if a service is installed
     win_service:
-      name: service name
+      name: SNMPTRAP
     register: service_info
 
   - name: Configure the BITS Service
     win_service:
-      name: BITSCompactServer
+      name: SNMPTRAP
       state: started
       start_mode: auto
