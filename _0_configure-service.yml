@@ -2,6 +2,11 @@
 - hosts: all
   tasks:
 
+  - name: Check if a service is installed
+    win_service:
+      name: service name
+    register: service_info
+
   - name: Configure the BITS Service
     win_service:
       name: BITSCompactServer
