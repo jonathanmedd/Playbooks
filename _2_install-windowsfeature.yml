@@ -7,3 +7,8 @@
       name: Remote-Desktop-Services
       state: present
       include_management_tools: yes
+
+  - name: Uninstall Print-Services
+    win_feature:
+      name: Print-Services
+      state: absent
