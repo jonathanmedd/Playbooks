@@ -5,8 +5,8 @@
 
   - name: Test API
     uri:
-      url: "https://httpbin.org/ip"
-      method: GET
+      url: "https://httpbin.org/anything"
+      method: POST
       #user: "test"
       #password: "Passwo"
       #validate_certs: no
@@ -14,13 +14,16 @@
       return_content: yes
       status_code:
       - 200
+      body:
+        testdata : true
+      body_format: json
     register: apiStatusOutput
 
-  - name: The following IPs were found
-    debug:
-      msg: "IPs are: {{ apiStatusOutput.json.origin }}"
+  # - name: The following IPs were found
+  #   debug:
+  #     msg: "IPs are: {{ apiStatusOutput.json.origin }}"
 
-  - name: fail on error
-    fail:
-      msg: "Failing the job, errors in the return data: {{ apiStatusOutput.json.origin }}"
-    when: apiStatusOutput.json.origin != "51.145.117.171, 51.145.117.171" #== for testing purposes
+  # - name: fail on error
+  #   fail:
+  #     msg: "Failing the job, errors in the return data: {{ apiStatusOutput.json.origin }}"
+  #   when: apiStatusOutput.json.origin != "51.145.117.171, 51.145.117.171" #== for testing purposes
