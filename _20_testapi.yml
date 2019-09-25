@@ -23,4 +23,4 @@
   - name: fail on error
     fail:
       msg: "Failing the job, errors in the return data: {{ apiStatusOutput.json.origin }}"
-    when: apiStatusOutput.json.origin is match("*51*") #== for testing purposes
+    when: apiStatusOutput.json.origin is match("*test*") #== for testing purposes
