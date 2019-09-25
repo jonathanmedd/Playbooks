@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  gather_facts: false
   tasks:
 
   - name: Test API
@@ -7,7 +8,7 @@
       url: "https://httpbin.org//basic-auth/test/Password"
       method: GET
       user: "test"
-      password: "Password"
+      password: "Passwo"
       #validate_certs: no
       force_basic_auth: yes
       return_content: yes
