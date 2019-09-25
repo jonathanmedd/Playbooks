@@ -18,9 +18,9 @@
 
   - name: The following IPs were found
     debug:
-      var: apiStatusOutput.json.origin
+      msg: "IPs are: {{ apiStatusOutput.json.origin }}"
 
   # - name: fail on error
   #   fail:
-  #     msg: "Failing the job, errors in the return data: {{ apiStatusOutput.origin }}"
+  #     msg: "Failing the job, errors in the return data: {{ apiStatusOutput.json.origin }}"
   #   when: (apiStatusOutput.json.origin | length > 0 ) #== for testing purposes
