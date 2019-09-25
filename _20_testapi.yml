@@ -23,4 +23,4 @@
   - name: fail on error
     fail:
       msg: "Failing the job, errors in the return data: {{ apiStatusOutput.json.origin }}"
-    when: apiStatusOutput.json.origin != "test" #== for testing purposes
+    when: apiStatusOutput.json.origin != "51.145.117.171, 51.145.117.171" #== for testing purposes
