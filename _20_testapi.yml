@@ -12,6 +12,6 @@
       #force_basic_auth: yes
       return_content: yes
       status_code:
-      - 200
+      - 205
 
     register: apiStatusOutput
