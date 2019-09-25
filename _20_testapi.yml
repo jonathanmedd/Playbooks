@@ -16,11 +16,11 @@
       - 200
     register: apiStatusOutput
 
-- name: The following IPs were found
-  debug:
-    var: apiStatusOutput.json.origin
+  - name: The following IPs were found
+    debug:
+      var: apiStatusOutput.json.origin
 
-# - name: fail on error
-#   fail:
-#     msg: "Failing the job, errors in the return data: {{ apiStatusOutput.origin }}"
-#   when: (apiStatusOutput.json.origin | length > 0 ) #== for testing purposes
+  # - name: fail on error
+  #   fail:
+  #     msg: "Failing the job, errors in the return data: {{ apiStatusOutput.origin }}"
+  #   when: (apiStatusOutput.json.origin | length > 0 ) #== for testing purposes
