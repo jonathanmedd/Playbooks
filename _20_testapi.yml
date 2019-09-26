@@ -13,7 +13,8 @@
       force_basic_auth: yes
       return_content: yes
       status_code:
-      - 200,404
+      - 200
+      - 400
     register: apiStatusOutput
 
   # - name: The following IPs were found
