@@ -14,7 +14,7 @@
       return_content: yes
       status_code:
       - 200
-      - 400
+      - 404
     register: apiStatusOutput
 
   # - name: The following IPs were found
