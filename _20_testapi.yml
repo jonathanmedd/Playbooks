@@ -5,8 +5,8 @@
 
   - name: Test API
     uri:
-      url: "https://httpbin.org/anything"
-      method: POST
+      url: "https://httpbin.org/status/404"
+      method: GET
       #user: "test"
       #password: "Passwo"
       #validate_certs: no
@@ -14,9 +14,6 @@
       return_content: yes
       status_code:
       - 200
-      body:
-        testdata : true
-      body_format: json
     register: apiStatusOutput
 
   # - name: The following IPs were found
