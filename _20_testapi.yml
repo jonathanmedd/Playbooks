@@ -21,8 +21,8 @@
       - 205
     register: apiStatusOutput
     until: apiStatusOutput.status == 205
-    retries: 5
-    delay: 3
+    retries: 20
+    delay: 1
 
   # - name: Status message
   #   debug:
