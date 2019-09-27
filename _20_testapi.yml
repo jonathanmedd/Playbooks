@@ -20,7 +20,7 @@
   - name: Status message
     debug:
       msg: "Deletion of workload domain was successful, ID does not exist."
-    when: apiStatusOutput.status == '404'
+    when: apiStatusOutput.status == 404
 
   # - name: The following IPs were found
   #   debug:
