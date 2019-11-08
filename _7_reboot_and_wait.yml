@@ -8,5 +8,5 @@
 
   - name: Wait default 300 seconds for port 3389 to become open, don't start checking for 15 seconds
     win_wait_for:
-      port: 8000
+      port: 3389
       delay: 15
