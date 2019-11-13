@@ -1,0 +1,8 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+
+  - name: Initialize Disk
+    win_shell: "Initialize-Disk -Number {{ disk_number }}"
+
