@@ -3,6 +3,13 @@
   gather_facts: false
   tasks:
 
-  - name: Initialize Disk
-    win_shell: "Initialize-Disk -Number {{ disk_number }}"
+  # - name: Initialize Disk
+  #   win_shell: "Initialize-Disk -Number {{ disk_number }}"
 
+
+- name: Get disk facts
+  win_disk_facts:
+
+- name: Output first disk size
+  debug:
+    var: ansible_facts.disks
