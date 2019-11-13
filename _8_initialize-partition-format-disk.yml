@@ -7,9 +7,9 @@
   #   win_shell: "Initialize-Disk -Number {{ disk_number }}"
 
 
-- name: Get disk facts
-  win_disk_facts:
+  - name: Get disk facts
+    win_disk_facts:
 
-- name: Output first disk size
-  debug:
-    var: ansible_facts.disks
+  - name: Output first disk size
+    debug:
+      var: ansible_facts.disks
