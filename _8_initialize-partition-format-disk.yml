@@ -1,15 +1,24 @@
 ---
 - hosts: all
-  #gather_facts: false
   tasks:
-
-  # - name: Initialize Disk
-  #   win_shell: "Initialize-Disk -Number {{ disk_number }}"
-
 
   - name: Get disk facts
     win_disk_facts:
 
-  - name: Output first disk size
-    debug:
-      var: ansible_facts.disks
+  - name: Initialize Disk
+    win_shell: "Initialize-Disk -Number {{ disk_number }}"
+    when: ansible_disks[disk_number].guid is none
+
+  - name: Create Partition Using All Available Space
+    win_partition:
+      drive_letter: "{{ drive_letter }}"
+      partition_size: -1
+      disk_number: "{{ disk_number }}"
+    when: ansible_disks[disk_number].guid is none
+
+  - name: Format the partition as NTFS and label it
+    win_format:
+      drive_letter: "{{ drive_letter }}"
+      file_system: NTFS
+      new_label: Data
+    when: ansible_disks[disk_number].guid is none
