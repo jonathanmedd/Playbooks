@@ -9,4 +9,9 @@
       password: "{{ local_account_password }}"
       state: present
       groups:
-        - Users
+        - Administrators
+
+  - name: Ensure test_user02 does not exist
+    win_user:
+      name: test_user02
+      state: absent
