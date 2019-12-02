@@ -13,12 +13,12 @@
       name: test_users
       members:
         - test_user01
-        - Springfield\test_admins
+        - SPRINGFIELD\test_admins
       state: present
 
 - name: Ensure only the domain printer_admins group exists in the local Print Operators group
   win_group_membership:
     name: Print Operators
     members:
-      - Springfield\print_admins
+      - SPRINGFIELD\print_admins
     state: pure
