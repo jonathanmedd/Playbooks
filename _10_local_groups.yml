@@ -1,0 +1,24 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Create new local group
+    win_group:
+      name: test_users
+      description: Test Users
+      state: present
+
+  - name: Add a local user and a domain group to the new group
+    win_group_membership:
+      name: test_users
+      members:
+        - test_user01
+        - Springfield\test_admins
+      state: present
+
+- name: Ensure only the domain printer_admins group exists in the local Print Operators group
+  win_group_membership:
+    name: Print Operators
+    members:
+      - Springfield\print_admins
+    state: pure
