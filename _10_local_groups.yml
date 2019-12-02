@@ -16,9 +16,9 @@
         - SPRINGFIELD\test_admins
       state: present
 
-- name: Ensure only the domain printer_admins group exists in the local Print Operators group
-  win_group_membership:
-    name: Print Operators
-    members:
-      - SPRINGFIELD\print_admins
-    state: pure
+  - name: Ensure only the domain printer_admins group exists in the local Print Operators group
+    win_group_membership:
+      name: Print Operators
+      members:
+        - SPRINGFIELD\print_admins
+      state: pure
