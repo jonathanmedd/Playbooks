@@ -5,6 +5,7 @@
   - name: Create new local account
     win_user:
       name: "{{ local_account_username }}"
+      fullname: "{{ local_account_fullname }}"
       password: "{{ local_account_password }}"
       state: present
       groups:
