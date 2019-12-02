@@ -20,5 +20,5 @@
     win_group_membership:
       name: Print Operators
       members:
-        - SPRINGFIELD\print_admins
+        - SPRINGFIELD\printer_admins
       state: pure
