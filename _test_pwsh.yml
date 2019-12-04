@@ -2,10 +2,13 @@
 - hosts: all
   tasks:
 
-  - name: Process VM Validation
-    #command: pwsh {{ scriptPath }}/progressPreference.ps1 -vCenterServer "{{ mgmtDns.vcs002.name }}.{{ searchDomain }}" -vCenterUser "{{ vCenter.user }}" -vCenterPassword "{{ temporaryCredentials.password }}"
-    command: pwsh -Command "Get-Process"
+  - name: Get-Processes
+    command: pwsh -Command "Get-Process | ConvertTo-Json"
     register: processes
+
+  - name: Process  output
+    set_fact:
+      vm: "{{ result2.stdout | from_json }}"
 
   - debug:
       msg: "{{ processes.stdout }}"
