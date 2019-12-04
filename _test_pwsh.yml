@@ -4,11 +4,12 @@
 
   - name: Get-Processes
     command: pwsh -Command "Get-Process | ConvertTo-Json"
-    register: processes
+    register: processData
 
-  - name: Process  output
+  - name: Process output
     set_fact:
-      vm: "{{ result2.stdout | from_json }}"
+      processes: "{{ processData.stdout | from_json }}"
 
   - debug:
-      msg: "{{ processes.stdout }}"
+      msg: "Found process: {{ item.ProcessName }}"
+    with_items: processes
