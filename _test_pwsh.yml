@@ -12,4 +12,7 @@
 
   - debug:
       msg: "{{ processes[0].Name }}"
-    #with_items: processes
+
+  - debug:
+      msg: "{{ item.Name }}"
+    loop: processes
