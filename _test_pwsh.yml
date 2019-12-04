@@ -4,8 +4,8 @@
 
   - name: Process VM Validation
     #command: pwsh {{ scriptPath }}/progressPreference.ps1 -vCenterServer "{{ mgmtDns.vcs002.name }}.{{ searchDomain }}" -vCenterUser "{{ vCenter.user }}" -vCenterPassword "{{ temporaryCredentials.password }}"
-    command: pwsh -Command "Get-Service"
-    register: service
+    command: pwsh -Command "Get-Process"
+    register: processes
 
   - debug:
-      msg: "{{ service.stdout }}"
+      msg: "{{ processes.stdout }}"
