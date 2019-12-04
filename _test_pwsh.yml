@@ -15,4 +15,4 @@
 
   - debug:
       msg: "{{ item.Name }}"
-    with_dict: processes
+    with_items: processes.processes
