@@ -11,5 +11,5 @@
       processes: "{{ processData.stdout | from_json }}"
 
   - debug:
-      msg: "Found process: {{ item.name }}"
+      msg: 'Found process: "{{ item.Name }}" '
     with_items: processes
