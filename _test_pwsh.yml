@@ -11,8 +11,14 @@
       processes: "{{ processData.stdout | from_json }}"
 
   - debug:
-      msg: "{{ processes[0].Name }}"
+      msg: "The first process found was {{ processes[0].Name }}"
 
-  - debug:
-      msg: "{{ item.Name }}"
-    with_items: processes.processes
+  - name: Run a pwsh command
+    shell: Invoke-RestMethod -Uri 'https://httpbin.org/get' | ConvertTo-Json
+    args:
+      executable: /usr/bin/pwsh
+    register: apiRequest
+
+  - name: Process output
+    set_fact:
+      apiOutput: "{{ apiRequest.stdout | from_json }}"
