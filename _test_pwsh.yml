@@ -2,7 +2,7 @@
 - hosts: all
   tasks:
 
-  - name: Get-Processes
+  - name: Get-Processes via command module
     command: pwsh -Command "Get-Process | ConvertTo-Json"
     register: processData
 
@@ -13,7 +13,7 @@
   - debug:
       msg: "The first process found was {{ processes[0].Name }}"
 
-  - name: Run a pwsh command
+  - name: Invoke-RestMethod via shell module
     shell: Invoke-RestMethod -Uri 'https://httpbin.org/get' | ConvertTo-Json
     args:
       executable: /usr/bin/pwsh
@@ -22,3 +22,6 @@
   - name: Process output
     set_fact:
       apiOutput: "{{ apiRequest.stdout | from_json }}"
+
+  - debug:
+      msg: "The User-Agent used to make the API request was {{ apiOutput.headers.User-Agent }}"
