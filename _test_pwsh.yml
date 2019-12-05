@@ -24,4 +24,4 @@
       apiOutput: "{{ apiRequest.stdout | from_json }}"
 
   - debug:
-      msg: "The User-Agent used to make the API request was {{ apiOutput.headers[/'User-Agent/''] }}"
+      msg: "The User-Agent used to make the API request was {{ apiOutput.headers['User-Agent'] }}"
