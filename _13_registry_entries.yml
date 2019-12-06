@@ -4,14 +4,14 @@
 
   - name: Create Registry Entry FileNotFoundCacheEntriesMax
     win_regedit:
-      path: HKCU:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation
+      path: HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation
       name: FileNotFoundCacheEntriesMax
       data: 2000
       type: dword
 
   - name: Updated Existing Registry Entry RequireSecuritySignature
     win_regedit:
-      path: HKCU:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation
+      path: HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation
       name: RequireSecuritySignature
       data: 1
       type: dword
