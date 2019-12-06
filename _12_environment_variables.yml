@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Create JAVA_HOME Environment Variable for all users
+    win_environment:
+      state: present
+      name: JAVA_HOME
+      value: "C:\_jdk12.0"
+      level: machine
+
+  - name: Add JAVA_HOME to PATH
+    win_path:
+      elements: '%JAVA_HOME%'
+      state: present
