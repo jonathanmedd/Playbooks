@@ -6,7 +6,7 @@
     win_environment:
       state: present
       name: JAVA_HOME
-      value: "C:\_jdk12.0"
+      value: 'C:\_jdk12.0'
       level: machine
 
   - name: Add JAVA_HOME to PATH
