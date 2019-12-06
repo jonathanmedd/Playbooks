@@ -10,7 +10,7 @@
     win_shell: Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
     when: not chocolatelyInstalled.stdout_lines
 
-  - name: Install dependencies
+  - name: Install package dependencies
     win_chocolatey:
       name:
        - chocolatey-core.extension
