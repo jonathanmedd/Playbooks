@@ -6,15 +6,14 @@
     win_shell: if ($env:ChocolateyInstall){return $true} else {return $false}
     register: chocolatelyInstalled
 
-  - name: Debug chocolatelyInstalled
-    debug:
-      msg: "chocolatelyInstalled is {{ chocolatelyInstalled.stdout }}"
+  - name: Install Chocolatey
+    win_shell: Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
     when: not chocolatelyInstalled
 
-  # - name: Install multiple packages
-  #   win_chocolatey:
-  #     name:
-  #     - vscode
-  #     - powershell-preview
-  #     state: present
+  - name: Install VS Code and PowerShell Preview
+    win_chocolatey:
+      name:
+      - vscode
+      - powershell-preview
+      state: present
 
