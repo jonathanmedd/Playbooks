@@ -9,9 +9,9 @@
       data: 2000
       type: dword
 
-  - name: Updated Existing Registry Entry RequireSecuritySignature\Parameters
+  - name: Updated Existing Registry Entry RequireSecuritySignature
     win_regedit:
-      path: HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation
+      path: HKLM:\SYSTEM\CurrentControlSet\Services\LanmanWorkstation\Parameters
       name: RequireSecuritySignature
       data: 1
       type: dword
