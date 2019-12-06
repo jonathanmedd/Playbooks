@@ -2,10 +2,17 @@
 - hosts: all
   tasks:
 
-  - name: Install multiple packages
-    win_chocolatey:
-      name:
-      - vscode
-      - powershell-preview
-      state: present
+  - name: Check Chocolatey is installed
+    win_shell: if ($env:ChocolateyInstall){return $true} else {return $false}
+    register: chocolatelyInstalled
+
+
+
+
+  # - name: Install multiple packages
+  #   win_chocolatey:
+  #     name:
+  #     - vscode
+  #     - powershell-preview
+  #     state: present
 
