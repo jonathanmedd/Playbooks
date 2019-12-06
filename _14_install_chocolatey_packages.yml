@@ -2,14 +2,6 @@
 - hosts: all
   tasks:
 
-  # - name: Check Chocolatey is installed
-  #   win_shell: if ($env:ChocolateyInstall){return $true} else {return $false}
-  #   register: chocolatelyInstalled
-
-  # - name: Install Chocolatey
-  #   win_shell: Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-  #   when: not chocolatelyInstalled.stdout_lines
-
   - name: Install package dependencies
     win_chocolatey:
       name:
@@ -23,4 +15,3 @@
       - vscode.install
       - powershell-preview
       state: present
-
