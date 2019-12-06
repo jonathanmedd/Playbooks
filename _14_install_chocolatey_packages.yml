@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Install multiple packages
+    win_chocolatey:
+      name:
+      - vscode
+      - powershell-preview
+      state: present
+
