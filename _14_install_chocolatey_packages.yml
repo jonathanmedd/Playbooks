@@ -6,8 +6,9 @@
     win_shell: if ($env:ChocolateyInstall){return $true} else {return $false}
     register: chocolatelyInstalled
 
-
-
+  - name: Debug chocolatelyInstalled
+    debug:
+      msg: "chocolatelyInstalled is {{ chocolatelyInstalled }}"
 
   # - name: Install multiple packages
   #   win_chocolatey:
