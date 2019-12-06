@@ -9,6 +9,7 @@
   - name: Debug chocolatelyInstalled
     debug:
       msg: "chocolatelyInstalled is {{ chocolatelyInstalled.stdout }}"
+    when: not chocolatelyInstalled
 
   # - name: Install multiple packages
   #   win_chocolatey:
