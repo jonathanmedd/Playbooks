@@ -18,7 +18,7 @@
   - name: Install VS Code and PowerShell Preview
     win_chocolatey:
       name:
-      - vscode
+      - vscode.install
       - powershell-preview
       state: present
 
