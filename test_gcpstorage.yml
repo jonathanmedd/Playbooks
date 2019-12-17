@@ -12,9 +12,9 @@
     with_items: "{{ file_vars }}"
     register: check_files
 
-  # - debug:
-  #     msg: 'file id {{item.item.id}} (name {{item.item.name}}) exists'
-  #   with_items: "{{ check_files.results }}"
+  - debug:
+      msg: "File {{item.item}} has exists status of {{ item.stat.exists }}"
+    with_items: "{{ check_files.results }}"
     #when: item.stat.exists
 
   # - name: Test Download
