@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+
+  - name: Test Download
+    gc_storage:
+      gs_access_key: "{{ gcp_access_key }}"
+      gs_secret_key: "{{ gcp_secret_key }}"
+      bucket: "{{ test290506 }}"
+      object: "test.txt"
+      dest: "/opt/binaries/test.txt"
+      mode: "get"
+    # with_items:
+    #   - "{{ binaries }}"
+    # become: yes
