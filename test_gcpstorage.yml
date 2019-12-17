@@ -12,22 +12,24 @@
     with_items: "{{ file_vars }}"
     register: check_files
 
-  - debug:
-      msg: "File {{item.item}} has exists status of {{ item.stat.exists }}"
-    with_items: "{{ check_files.results }}"
+  # - debug:
+  #     msg: "File {{item.item}} has exists status of {{ item.stat.exists }}"
+  #   with_items: "{{ check_files.results }}"
+  #   when: check_files.results[0].stat.exists == true and check_files.results[1].stat.exists == true
+
+  - name: Test Download
+    gc_storage:
+      gs_access_key: "{{ gcp_access_key }}"
+      gs_secret_key: "{{ gcp_secret_key }}"
+      bucket: "test290506"
+      object: "powershell-yaml.zip"
+      dest: "/opt/binaries/powershell-yaml.zip"
+      mode: "get"
     when: check_files.results[0].stat.exists == true and check_files.results[1].stat.exists == true
 
-  # - name: Test Download
-  #   gc_storage:
-  #     gs_access_key: "{{ gcp_access_key }}"
-  #     gs_secret_key: "{{ gcp_secret_key }}"
-  #     bucket: "test290506"
-  #     object: "powershell-yaml.zip"
-  #     dest: "/opt/binaries/powershell-yaml.zip"
-  #     mode: "get"
-
-  # - name: Unarchive powershell-yaml.zip
-  #   unarchive:
-  #     src: "/opt/binaries/powershell-yaml.zip"
-  #     dest: "/opt/binaries"
-  #     remote_src: yes
+  - name: Unarchive powershell-yaml.zip
+    unarchive:
+      src: "/opt/binaries/powershell-yaml.zip"
+      dest: "/opt/binaries"
+      remote_src: yes
+    when: check_files.results[0].stat.exists == true and check_files.results[1].stat.exists == true
