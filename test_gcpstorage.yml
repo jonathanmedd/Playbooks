@@ -15,7 +15,7 @@
   - debug:
       msg: "File {{item.item}} has exists status of {{ item.stat.exists }}"
     with_items: "{{ check_files.results }}"
-    #when: item.stat.exists
+    when: check_files.results[0].stat.exists == true
 
   # - name: Test Download
   #   gc_storage:
