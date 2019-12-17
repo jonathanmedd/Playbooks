@@ -14,5 +14,5 @@
   - name: Unarchive powershell-yaml.zip
     unarchive:
       src: "/opt/binaries/powershell-yaml.zip"
-      dest: /usr/local/bin
-      remote_src: "/opt/binaries"
+      dest: "/opt/binaries"
+      remote_src: yes
