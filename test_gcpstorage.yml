@@ -12,5 +12,5 @@
       mode: "get"
     with_items:
       - "test.txt"
-      - "powershell-yaml"
+      - "powershell-yaml/"
     # become: yes
