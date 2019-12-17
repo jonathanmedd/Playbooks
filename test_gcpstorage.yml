@@ -7,9 +7,10 @@
       gs_access_key: "{{ gcp_access_key }}"
       gs_secret_key: "{{ gcp_secret_key }}"
       bucket: "test290506"
-      object: "test.txt"
-      dest: "/opt/binaries/test.txt"
+      object: "{{ item }}"
+      dest: "/opt/binaries/{{ item }}"
       mode: "get"
-    # with_items:
-    #   - "{{ binaries }}"
+    with_items:
+      - "test.txt"
+      - "powershell-yaml"
     # become: yes
