@@ -2,7 +2,7 @@
 - hosts: all
   vars:
     file_vars:
-      - "/opt/binaries/powershell-yaml/0.4.0/powershell-yaml.psd1"
+      - "/opt/binaries/powershell-yaml/0.4.0/powershell-yaml.psd2"
       - "/opt/binaries/powershell-yaml/0.4.0/powershell-yaml.psm1"
   tasks:
 
