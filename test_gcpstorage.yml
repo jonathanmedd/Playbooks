@@ -25,11 +25,11 @@
       object: "powershell-yaml.zip"
       dest: "/opt/binaries/powershell-yaml.zip"
       mode: "get"
-    when: check_files.results[0].stat.exists == true and check_files.results[1].stat.exists == true
+    when: check_files.results[0].stat.exists == false and check_files.results[1].stat.exists == false
 
   - name: Unarchive powershell-yaml.zip
     unarchive:
       src: "/opt/binaries/powershell-yaml.zip"
       dest: "/opt/binaries"
       remote_src: yes
-    when: check_files.results[0].stat.exists == true and check_files.results[1].stat.exists == true
+    when: check_files.results[0].stat.exists == false and check_files.results[1].stat.exists == false
