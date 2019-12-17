@@ -3,7 +3,7 @@
   vars:
     file_vars:
       - "/opt/binaries/powershell-yaml/0.4.0/powershell-yaml.psd2"
-      - "/opt/binaries/powershell-yaml/0.4.0/powershell-yaml.psm1"
+      - "/opt/binaries/powershell-yaml/0.4.0/powershell-yaml.psm2"
   tasks:
 
   - name: Checking existing files
@@ -15,7 +15,7 @@
   - debug:
       msg: "File {{item.item}} has exists status of {{ item.stat.exists }}"
     with_items: "{{ check_files.results }}"
-    when: check_files.results[0].stat.exists == true
+    when: check_files.results[0].stat.exists == true and check_files.results[1].stat.exists == true
 
   # - name: Test Download
   #   gc_storage:
