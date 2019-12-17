@@ -7,10 +7,12 @@
       gs_access_key: "{{ gcp_access_key }}"
       gs_secret_key: "{{ gcp_secret_key }}"
       bucket: "test290506"
-      object: "{{ item }}"
-      dest: "/opt/binaries/{{ item }}"
+      object: "powershell-yaml.zip"
+      dest: "/opt/binaries/powershell-yaml.zip"
       mode: "get"
-    with_items:
-      - "test.txt"
-      - "powershell-yaml/"
-    # become: yes
+
+  - name: Unarchive powershell-yaml.zip
+    unarchive:
+      src: "/opt/binaries/powershell-yaml.zip"
+      dest: /usr/local/bin
+      remote_src: "/opt/binaries"
