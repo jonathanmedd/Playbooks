@@ -20,14 +20,14 @@
       msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
 
 
-  - name: Debug vm type
-    debug:
-      msg: "vm type: {{ vm | type_debug }} "
+  - name: Set vm type
+    set_fact:
+      vm_type: "{{ vm | type_debug }}"
 
   - name: Debug vm dict
     debug:
       msg: "Display this when dict"
-    when:  "{{ vm | type_debug }} is dict"
+    when:  vm_type == 'dict'
 
   - name: Copy a single file
     win_copy:
@@ -46,10 +46,10 @@
     debug:
       msg: "vm2 type: {{ vm2 | type_debug }} "
 
-  - name: Debug vm dict
-    debug:
-      msg: "Display this when dict"
-    when:  "{{ vm2 | type_debug }} == list"
+  # - name: Debug vm dict
+  #   debug:
+  #     msg: "Display this when dict"
+  #   when:  "{{ vm2 | type_debug }} == list"
 
   # - name: Debug VM properties
   #   debug:
