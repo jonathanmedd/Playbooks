@@ -20,7 +20,7 @@
       msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
 
 
-  - name: Debug length
+  - name: Debug vm length
     debug:
       msg: "vm Number_of_elements: {{ vm |length }} "
 
@@ -36,6 +36,10 @@
   - name: Process win_shell output
     set_fact:
       vm2: "{{ result3.stdout | from_json }}"
+
+  - name: Debug vm2 length
+    debug:
+      msg: "vm2 Number_of_elements: {{ vm2 |length }} "
 
   # - name: Debug VM properties
   #   debug:
