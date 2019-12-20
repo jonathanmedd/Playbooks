@@ -18,3 +18,20 @@
   - name: Debug VM properties
     debug:
       msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
+
+  - name: Copy a single file
+    win_copy:
+      src: "{{ playbook_dir }}/files/test_output3.ps1"
+      dest: C:\Temp\test_output3.ps1
+
+  - name: Run a script
+    win_shell: C:\temp\test_output3.ps1
+    register: result3
+
+  - name: Process win_shell output
+    set_fact:
+      vm: "{{ result3.stdout | from_json }}"
+
+  # - name: Debug VM properties
+  #   debug:
+  #     msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
