@@ -24,6 +24,11 @@
     debug:
       msg: "vm type: {{ vm | type_debug }} "
 
+  - name: Debug vm type
+    debug:
+      msg: "Display this when dict"
+    when: "{{ vm | type_debug }} == dict"
+
   - name: Copy a single file
     win_copy:
       src: "{{ playbook_dir }}/files/test_output3.ps1"
