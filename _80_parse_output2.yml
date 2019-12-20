@@ -30,7 +30,7 @@
 
   - name: Process win_shell output
     set_fact:
-      vm: "{{ result3.stdout | from_json }}"
+      vm2: "{{ result3.stdout | from_json }}"
 
   # - name: Debug VM properties
   #   debug:
