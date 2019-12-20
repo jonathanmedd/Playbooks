@@ -39,7 +39,7 @@
 
   - name: Debug vm2 length
     debug:
-      msg: "vm2 Number_of_elements: {{ vm2 |length }} "
+      msg: "vm2 Number_of_elements: {{ vm2.data |length }} "
 
   # - name: Debug VM properties
   #   debug:
