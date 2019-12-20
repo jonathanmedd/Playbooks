@@ -19,6 +19,11 @@
     debug:
       msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
 
+
+  - name: Debug length
+    debug:
+      msg: "vm Number_of_elements: {{ vm |length }} "
+
   - name: Copy a single file
     win_copy:
       src: "{{ playbook_dir }}/files/test_output3.ps1"
