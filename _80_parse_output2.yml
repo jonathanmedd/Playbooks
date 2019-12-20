@@ -46,6 +46,11 @@
     debug:
       msg: "vm2 type: {{ vm2 | type_debug }} "
 
+  - name: Debug vm dict
+    debug:
+      msg: "Display this when dict"
+    when:  "{{ vm2 | type_debug }} == dict"
+
   # - name: Debug VM properties
   #   debug:
   #     msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
