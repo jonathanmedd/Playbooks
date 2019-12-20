@@ -27,7 +27,7 @@
   - name: Debug vm dict
     debug:
       msg: "Display this when dict"
-    when:  vm_type == 'dict'
+    when:  vm_type == 'list'
 
   - name: Copy a single file
     win_copy:
