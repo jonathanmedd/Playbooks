@@ -20,9 +20,9 @@
       msg: VM {{ vm.name }} has IP Address {{ vm.ipAddress }}
 
 
-  - name: Debug vm length
+  - name: Debug vm type
     debug:
-      msg: "vm Number_of_elements: {{ vm |length }} "
+      msg: "vm type: {{ vm | type_debug }} "
 
   - name: Copy a single file
     win_copy:
@@ -37,9 +37,9 @@
     set_fact:
       vm2: "{{ result3.stdout | from_json }}"
 
-  - name: Debug vm2 length
+  - name: Debug vm2 type
     debug:
-      msg: "vm2 Number_of_elements: {{ vm2.data |length }} "
+      msg: "vm2 type: {{ vm2 | type_debug }} "
 
   # - name: Debug VM properties
   #   debug:
