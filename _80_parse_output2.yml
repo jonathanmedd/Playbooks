@@ -27,7 +27,7 @@
   - name: Debug vm dict
     debug:
       msg: "Display this when dict"
-    when:  "{{ vm | type_debug }} == list"
+    when:  "{{ vm | type_debug }} is dict"
 
   - name: Copy a single file
     win_copy:
