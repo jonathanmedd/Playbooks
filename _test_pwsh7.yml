@@ -21,8 +21,12 @@
       executable: /usr/bin/pwsh-preview
     register: result1
 
+  - name: Process output
+    set_fact:
+      errorDetail: "{{ result1.stdout | from_json }}"
+
   - debug:
-      msg: "Errordetail: {{ result1.stdout_lines }}"
+      msg: "Error Category: {{ errorDetail.Category }}, Error Activity: {{ errorDetail.Activity }}, Error Reason: {{ errorDetail.Reason }} for Target {{ errorDetail.TargetName }}"
 
   - name: Invoke-RestMethod via shell module
     shell: Invoke-RestMethod -Uri 'https://httpbin.org/get' | ConvertTo-Json
