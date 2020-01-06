@@ -22,7 +22,7 @@
     register: result1
 
   - debug:
-      msg: "Errordetail: {{ result1.stdout }}"
+      msg: "Errordetail: {{ result1.stdout_lines }}"
 
   - name: Invoke-RestMethod via shell module
     shell: Invoke-RestMethod -Uri 'https://httpbin.org/get' | ConvertTo-Json
