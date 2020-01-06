@@ -3,7 +3,7 @@
   tasks:
 
   - name: Get-ChildItem via command module
-    command: pwsh-preview -Command "Get-ChildItem test -ErrorAction SilentlyContinue"
+    command: pwsh-preview -Command "try {Get-ChildItem test -ErrorAction SilentlyContinue} catch {exit 0}"
     register: childItemData
 
   - name: Get-Error via command module
