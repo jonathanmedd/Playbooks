@@ -2,19 +2,6 @@
 - hosts: all
   tasks:
 
-  # - name: Get-ChildItem via command module
-  #   command: pwsh-preview -Command "try {Get-ChildItem test -ErrorAction SilentlyContinue} catch {exit 0}"
-  #   register: childItemData
-
-  # - name: Get-Error via command module
-  #   command: pwsh-preview -Command "Get-Error"
-  #   register: errorData
-
-  # - name: Process output
-  #   set_fact:
-  #     processes: "{{ processData.stdout | from_json }}"
-
-
   - name: Run a script
     shell: "{{ playbook_dir }}/files/test_output4.ps1"
     args:
