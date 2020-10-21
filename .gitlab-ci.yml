@@ -1,0 +1,48 @@
+image: nginx:alpine
+
+stages:
+  - syntax check
+  - test
+
+yaml_syntax_check:
+  stage: syntax check
+  before_script:
+    - apk add git python3 python3-dev build-base libressl-dev musl-dev libffi-dev
+    - pip3 install pip --upgrade
+    - pip3 install yamllint
+    - pip3 install jinja2
+  script:
+    - |
+        IFS=$'\n';for file in $(git diff-tree --no-commit-id --name-only -r $CI_COMMIT_SHA); do
+          echo "File is $file"
+          if [ ${file: -4} == ".yml" ]; then
+            echo "Made it into the YAML if statement"
+            yamllint $file
+          else
+            echo "Didn't make it into the YAML if statement"
+          fi
+          if [ ${file: -3} == ".j2" ]; then
+            echo "Made it into the Jinja if statement"
+            python3 ./ci/jinja_syntax_check.py $file
+          else
+            echo "Didn't make it into the Jinja if statement"
+          fi
+        done
+  only:
+    - merge_requests
+
+sonarqube-check:
+  stage: test
+  before_script:
+    - apk add python3 python3-dev build-base libressl-dev musl-dev libffi-dev openjdk8
+    - pip3 install pip --upgrade
+    - pip3 install ansible-lint
+    - ansible-lint --version
+    - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_VERSION.zip
+    - unzip sonar-scanner-cli-$SONAR_VERSION.zip -d /opt
+    - chmod +x /opt/sonar-scanner-$SONAR_VERSION/bin/sonar-scanner
+  script:
+    - /opt/sonar-scanner-$SONAR_VERSION/bin/sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.projectKey=playbooks -Dsonar.sources=. -Dsonar.host.url=$SONAR_HOST_URL -Dsonar.login=$SONAR_TOKEN
+  only:
+    - merge_requests
+    - master
